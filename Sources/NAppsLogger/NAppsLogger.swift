@@ -12,7 +12,11 @@ public class NLogger {
     
     public func send(_ message: Any, type: NLogger.LogType, date: Date = Date(), queue: String = DispatchQueue.currentLabel, thread: String = Thread.currentName, file: String = #file, function: String = #function, line: Int = #line
       ) {
-        
+        for i in writers {
+            let formattedPrefix = format(prefix: i.prefix, level: type, date: date, queue: queue, thread: thread, file: file, function: function, line: line)
+            let message = "\(formattedPrefix) \(message)"
+            i.write(message)
+        }
     }
     
     public func format(prefix: LogPrefix, level: LogType, date: Date, queue: String, thread: String, file: String, function: String, line: Int) -> String {
@@ -32,7 +36,7 @@ public class NLogger {
       if prefix.contains(.file) || prefix.contains(.function) || prefix.contains(.line) {
         prefixString = "\(prefixString){\(file.absolutePathFilename).\(function)#\(line)} "
       }
-      return "[\(prefixString.trimmingCharacters(in: CharacterSet(arrayLiteral: " ")))] "
+      return "[\(prefixString.trimmingCharacters(in: CharacterSet(arrayLiteral: " ")))]"
     }
     
     public func canSendAMessageWithLogType(_ logType: NLogger.LogType) -> Bool {
