@@ -12,6 +12,9 @@ public class NLogger {
     
     public func send(_ message: Any, type: NLogger.LogType, date: Date = Date(), queue: String = DispatchQueue.currentLabel, thread: String = Thread.currentName, file: String = #file, function: String = #function, line: Int = #line
       ) {
+        guard canSendAMessageWithLogType(type) else {
+            return
+        }
         for i in writers {
             let formattedPrefix = format(prefix: i.prefix, level: type, date: date, queue: queue, thread: thread, file: file, function: function, line: line)
             let message = "\(formattedPrefix) \(message)"
@@ -40,7 +43,7 @@ public class NLogger {
     }
     
     public func canSendAMessageWithLogType(_ logType: NLogger.LogType) -> Bool {
-        levels.contains(logType)
+        levels.contains(logType) && enabled
     }
     
     public struct LogType: OptionSet, Equatable, Hashable {
