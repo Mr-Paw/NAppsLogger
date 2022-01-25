@@ -1,3 +1,5 @@
+![banner](https://repository-images.githubusercontent.com/450205581/8ff49b2a-fe44-4891-80bd-f0e8d5a0aab1)
+
 # NAppsLogger
 
 ### An easy to use logger for your app
