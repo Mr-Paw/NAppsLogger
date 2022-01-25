@@ -7,10 +7,15 @@
 
 import Foundation
 
+/// Protocol that all log writers conform to. You can  create yout own custom log writer using this protocol
 public protocol NLogWriter {
+    /// The executor is used to define the atmosphere in which the message will be sent to `NLogWriter`
     var executor: LogExecutable { get }
+    
+    /// The format of the log message prefix depends on this parameter.
     var prefix: LogPrefix { get }
     
+    /// Use this method to write log message somewhere (e. g. console, log file)
     func write(_ message: String)
 }
 
@@ -18,6 +23,7 @@ public protocol LogExecutable {
   func execute(log job: @escaping () -> Void)
 }
 
+/// Defines in what atmosphere job will be executed: asyncronus passing a `DispatchQueue` or sincronus passing a `NSLocking`
 public enum LogExecutionType: LogExecutable {
   case sync(lock: NSLocking)
   case async(queue: DispatchQueue)
@@ -34,6 +40,7 @@ public enum LogExecutionType: LogExecutable {
   }
 }
 
+/// Defines what info will be in log message prefix
 public struct LogPrefix: OptionSet, Equatable, Hashable {
   public let rawValue: UInt32
 

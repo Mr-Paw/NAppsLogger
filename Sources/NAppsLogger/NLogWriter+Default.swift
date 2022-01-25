@@ -7,6 +7,7 @@
 
 import Foundation
 
+/// A log writer that writes messages to console
 public struct ConsoleLogWriter: NLogWriter {
   public var sendToNSLog: Bool
   public var executor: LogExecutable
@@ -31,7 +32,7 @@ public struct ConsoleLogWriter: NLogWriter {
   }
 }
 
-
+/// A log writer that writes messages to .log file
 open class FileLogWriter: NLogWriter {
 
   internal static var logger = NLogger()
