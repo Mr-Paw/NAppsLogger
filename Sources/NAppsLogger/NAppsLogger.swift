@@ -99,21 +99,21 @@ extension NLogger.LogType: CustomStringConvertible {
     public var description: String {
         switch self {
         case .debug:
-            return "DEBUG"
+            return "Debug"
         case .info:
-            return "INFO"
+            return "Info"
         case .event:
-            return "EVENT"
+            return "Event"
         case .warn:
-            return "WARNING"
+            return "Warning"
         case .error:
-            return "ERROR"
+            return "Error"
         case .log:
-            return "LOG EVENT"
+            return "Log event"
         case .all:
-            return "ALL"
+            return "All"
         default:
-            return "CUSTOM"
+            return "Custom"
         }
     }
 }
