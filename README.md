@@ -1,4 +1,4 @@
-![banner](https://repository-images.githubusercontent.com/450205581/8ff49b2a-fe44-4891-80bd-f0e8d5a0aab1)
+![banner](https://repository-images.githubusercontent.com/450205581/833ab159-d804-48be-9057-e047b7446008)
 
 # NAppsLogger
 
