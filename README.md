@@ -62,6 +62,10 @@ let logger = <#your NLogger#>
 logger.levels = // pass NLogger.LogType
 ```
 
+## Installation:
+Via SPM (Swift Package Manager)
+In Xcode menu File->Add Package, then enter https://github.com/Mr-Paw/NAppsLogger.git into search field, choose a version (xcode will give the latest version automatically) and install
+
 ## Documentation
 
 Documentation is available as `.doccarchive` (Xcode 13+ readable) at releases page
